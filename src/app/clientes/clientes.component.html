@@ -1,0 +1,21 @@
+<h1>Clientes</h1>
+<div class="col-12">
+	<div class="row">
+		<div class="col-6">
+			<app-clientes-add [clienteInput]="elcliente"
+				(insertedCliente)="insertedCliente($event)"
+				(updatededCliente)="updatededCliente($event)"
+				(deletededCliente)="deletededCliente($event)">
+			</app-clientes-add>
+		</div>
+		<div class="col-6">
+			<ul class="row">
+				<li class="card col-12" *ngFor="let elcliente of clientesService.clientes" (dblclick)="loadedClientetoHtml(elcliente)">
+					<app-clientes-display [cliente]="elcliente"
+						(loadedCliente)="loadedCliente($event)">
+					</app-clientes-display>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

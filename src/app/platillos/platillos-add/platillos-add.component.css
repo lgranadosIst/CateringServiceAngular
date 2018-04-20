@@ -1,0 +1,16 @@
+.etiqueta{
+	width: 35%;
+	display: inline-block;
+}
+.texto{
+	width: 50%;
+	display: inline-block;
+}
+.area-texto{
+	width: 50%;
+	height: 50%;
+	display: inline-block;
+}
+.enlinea{
+	display: inline-block;
+}

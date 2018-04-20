@@ -1,0 +1,21 @@
+<h1>Platillos</h1>
+<div class="col-12">
+	<div class="row">
+		<div class="col-6">
+			<app-platillos-add [platilloInput]="platillo"
+				(insertedPlatillo)="insertedPlatillo($event)"
+				(updatededPlatillo)="updatededPlatillo($event)"
+				(deletededPlatillo)="deletededPlatillo($event)">
+			</app-platillos-add>
+		</div>
+		<div class="col-6">
+			<ul class="row">
+				<li class="card col-12" *ngFor="let elplatillo of platillosService.platillos" (dblclick)="loadedPlatillotoHtml(elplatillo)">
+					<app-platillos-display [platillo]="elplatillo"
+						(loadedPlatillo)="loadedPlatillo($event)">
+					</app-platillos-display>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
