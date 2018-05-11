@@ -1,7 +1,6 @@
-li{
-	margin-bottom: 0px;
+.platillo-display{
+	margin-top: 5px;
 }
-li: hover{
-	background-color: #E6E6E6;
-	cursor: crosshair;
+.platillos{
+	margin-left: 5px;
 }

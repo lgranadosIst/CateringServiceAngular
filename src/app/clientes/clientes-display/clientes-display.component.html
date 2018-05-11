@@ -1,5 +1,32 @@
-<div class="grilla row">
-	{{ cliente.id }} - Nombre: {{ cliente.nombre }} {{ cliente.apellidos }} Telf: {{ cliente.telefono }} Correo-e: {{ cliente.correo }} 
-	<br>
-	     Dir: {{ cliente.direccion }}
+<div class="row" [class.deleting]="isDeleting">
+	<div class="col-9">
+		<div class="row">
+			<div class="col-3">Nombre: </div><div class="col-9"> {{cliente.nombre}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Apellidos: </div><div class="col-9"> {{cliente.apellidos}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Telefono: </div><div class="col-9"> {{cliente.telefono}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Correo: </div><div class="col-9"> {{cliente.correo}}</div>
+		</div>
+		<div class="row">
+			<div class="col-3">Direccion: </div><div class="col-9"> {{cliente.direccion}}</div>
+		</div>
+	</div>
+	<div class="col-3 actions">
+		<div class="row">
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+			</div>
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-danger" (click)="borrar()">
+					<span *ngIf="isDeleting">...</span>
+					<span *ngIf="!isDeleting">Eliminar</span>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>

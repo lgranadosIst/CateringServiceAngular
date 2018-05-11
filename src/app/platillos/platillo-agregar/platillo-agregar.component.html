@@ -1,0 +1,66 @@
+<form [formGroup]="platilloForm" (ngSubmit)="onSubmit()" novalidate>
+	<div class="form-group">
+		<label class="center-block">Nombre
+			<input class="form-control" formControlName="nombre" placeholder="platillo">
+		</label>
+		<div class="alert alert-danger" *ngIf="!platilloForm.controls['nombre'].valid && 
+		(platilloForm.controls['nombre'].dirty || platilloForm.controls['nombre'].touched)">
+			<div *ngIf="platilloForm.controls['nombre'].errors.required">
+				El nombre del platillo es requerido
+			</div>
+			<div *ngIf="platilloForm.controls['nombre'].errors.minlength">
+				El nombre del platillo debe tener al menos 5 caracteres.
+			</div>
+			<div *ngIf="platilloForm.controls['nombre'].errors.maxlength">
+				El nombre del platillo debe tener maximo 50 caracteres.
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="center-block">Precio
+			<input class="form-control" formControlName="precio">
+		</label>
+		<div class="alert alert-danger" *ngIf="!platilloForm.controls['precio'].valid && 
+		(platilloForm.controls['precio'].dirty || platilloForm.controls['precio'].touched)">
+			<div *ngIf="platilloForm.controls['precio'].errors.required">
+				El precio es requerido
+			</div>
+			<div *ngIf="platilloForm.controls['precio'].errors.min">
+				El precio no puede ser menor que cero.
+			</div>
+			<div *ngIf="platilloForm.controls['precio'].errors.pattern">
+				El precio deben ser números.
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="center-block">Descripcion
+			<input class="form-control" formControlName="descripcion" type="textarea" rows="4" columns="50">
+		</label>
+		<div class="alert alert-danger" *ngIf="!platilloForm.controls['descripcion'].valid && 
+		(platilloForm.controls['descripcion'].dirty || platilloForm.controls['descripcion'].touched)">
+			<div *ngIf="platilloForm.controls['descripcion'].errors.required">
+				El descripcion del platillo es requerido
+			</div>
+			<div *ngIf="platilloForm.controls['descripcion'].errors.minlength">
+				El descripcion del platillo debe tener al menos 5 caracteres.
+			</div>
+			<div *ngIf="platilloForm.controls['descripcion'].errors.maxlength">
+				El descripcion del platillo debe tener maximo 500 caracteres.
+			</div>
+			<!--<div *ngIf="platilloForm.controls['descripcion'].errors && platilloForm.controls['descripcion'].errors.textContains">
+				El texto no incluye {{requiredText}}
+			</div>-->
+		</div>
+	</div>
+
+	<div>
+		<button type="submit" [disabled]="platilloForm.invalid" class="btn btn-success">
+			<span *ngIf="!isEditing">Agregar</span>
+			<span *ngIf="isEditing">Actualizar</span>
+		</button> &nbsp;
+		<button type="reset" (click)="revert()" class="btn btn-danger">Revertir</button>
+	</div>
+</form>

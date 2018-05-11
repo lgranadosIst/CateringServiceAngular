@@ -1,5 +1,26 @@
-<div class="grilla row">
-	{{ platillo.id }} - Nombre: {{ platillo.nombre }}  - Precio: {{ platillo.precio }} 
-	<br>
-	     Desc: {{ platillo.descripcion }}
+<div class="row" [class.deleting]="isDeleting">
+	<div class="col-9">
+		<div class="row">
+			<div class="col-4">Nombre: </div><div class="col-8"> {{platillo.nombre}}</div>
+		</div>
+		<div class="row">
+			<div class="col-4">Precio: </div><div class="col-8"> {{platillo.precio}}</div>
+		</div>
+		<div class="row">
+			<div class="col-4">Descripcion: </div><div class="col-8"> {{platillo.descripcion}}</div>
+		</div>
+	</div>
+	<div class="col-3 actions">
+		<div class="row">
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-primary" (click)="editar()">Editar</button>
+			</div>
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-danger" (click)="borrar()">
+					<span *ngIf="isDeleting">...</span>
+					<span *ngIf="!isDeleting">Eliminar</span>
+				</button>
+			</div>
+		</div>
+	</div>
 </div>

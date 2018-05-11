@@ -1,0 +1,93 @@
+<form [formGroup]="clienteForm" (ngSubmit)="onSubmit()" novalidate>
+	<div class="form-group">
+		<label class="center-block">Nombre
+			<input class="form-control" formControlName="nombre">
+		</label>
+		<div class="alert alert-danger" *ngIf="!clienteForm.controls['nombre'].valid && (clienteForm.controls['nombre'].dirty || clienteForm.controls['nombre'].touched)">
+			<div *ngIf="clienteForm.controls['nombre'].errors.required">
+				El nombre es requerido
+			</div>
+			<div *ngIf="clienteForm.controls['nombre'].errors.minlength">
+				El nombre debe tener al menos 3 caracteres.
+			</div>
+			<div *ngIf="clienteForm.controls['nombre'].errors.maxlength">
+				El nombre debe tener maximo 50 caracteres.
+			</div>
+		<!--
+			<div *ngIf="[text-starts-uppercase]="clienteForm.controls['nombre']">
+				El nombre debe iniciar con mayuscula.
+			</div>
+		-->
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Apellidos
+			<input class="form-control" formControlName="apellidos">
+		</label>
+		<div *ngIf="clienteForm.controls['apellidos'].errors && (clienteForm.controls['apellidos'].dirty || clienteForm.controls['apellidos'].touched)" class="alert alert-danger">
+			<div *ngIf="clienteForm.controls['apellidos'].errors.required">
+				Al menos un apellido es requerido
+			</div>
+			<div *ngIf="clienteForm.controls['apellidos'].errors.minlength">
+					Debe ingresar al menos 5 caracteres para el/los apellidos.
+			</div>
+			<div *ngIf="clienteForm.controls['apellidos'].errors.maxlength">
+				No se permiten mas de 100 caracteres para el/los apellidos.
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Telefono
+			<input class="form-control" formControlName="telefono">
+		</label>
+		<div *ngIf="clienteForm.controls['telefono'].errors && (clienteForm.controls['telefono'].dirty || clienteForm.controls['telefono'].touched)" class="alert alert-danger">
+			<div *ngIf="clienteForm.controls['telefono'].errors.required">
+				El telefono es requerido
+			</div>
+			<div *ngIf="clienteForm.controls['telefono'].errors.maxlength">
+				El telefono debe tener maximo 8 digitos.
+			</div>
+			
+			<div *ngIf="clienteForm.controls['telefono'].errors.patternInvalid">
+				Formato de Telefono invalido: (ingrese 8 digitos).
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Correo
+			<input class="form-control" formControlName="correo">
+		</label>
+		<div *ngIf="clienteForm.controls['correo'].invalid && (clienteForm.controls['correo'].dirty || clienteForm.controls['correo'].touched)" class="alert alert-danger">
+			<div *ngIf="clienteForm.controls['correo'].errors.required">
+				El Correo es requerido
+			</div>
+			<div *ngIf="clienteForm.controls['correo'].errors.maxlength">
+				El correo debe tener como maximo 50 caracteres.
+			</div>
+			<div *ngIf="clienteForm.controls['correo'].errors.patternInvalid">
+				El Correo es invalido
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="center-block">Direccion
+			<input class="form-control" formControlName="direccion" type="textarea" rows="4" columns="50">
+		</label>
+		<div *ngIf="!clienteForm.controls['direccion'].valid && (clienteForm.controls['direccion'].dirty || clienteForm.controls['direccion'].touched)" class="alert alert-danger">
+			<div *ngIf="clienteForm.controls['direccion'].errors.required">
+				El direccion es requerida
+			</div>
+			<div *ngIf="clienteForm.controls['direccion'].errors.maxlength">
+				El direccion debe tener como maximo 500 caracteres.
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<button type="submit" [disabled]="clienteForm.invalid" class="btn btn-success">
+			<span *ngIf="!isEditing">Agregar</span>
+			<span *ngIf="isEditing">Actualizar</span>
+		</button> &nbsp;
+		<button type="reset" (click)="revert()" class="btn btn-danger">Revertir</button>
+	</div>
+</form>

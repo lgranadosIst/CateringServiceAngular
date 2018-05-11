@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Cliente } from '../cliente.model';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Cliente } from '../../models/cliente';
+import { ClientesService } from '../../services/clientes.service';
 
 @Component({
   selector: 'app-clientes-display',
@@ -9,10 +10,23 @@ import { Cliente } from '../cliente.model';
 export class ClientesDisplayComponent implements OnInit {
 
 	@Input() cliente: Cliente;
+	@Output() borrarCliente = new EventEmitter<Cliente>();
+	@Output() editarCliente = new EventEmitter<Cliente>();
+	public isDeleting = false;
 
-	constructor() { }
+	constructor(private clientesService:ClientesService) { }
 
 	ngOnInit() {
+		
 	}
-	
+
+	borrar(){
+		this.isDeleting = true;
+		this.borrarCliente.emit(this.cliente);
+	}
+
+
+	editar(){
+		this.editarCliente.emit(this.cliente);
+	}
 }

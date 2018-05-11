@@ -1,0 +1,56 @@
+/*
+	ESTADOS DE FORMURIO Y ESTADOS DE ENTRADA: 
+	----------------------------------------
+(se usan si se requiere un campo, y el usuario lo deja en blanco).
+
+Los campos de entrada tienen los siguientes estados:
+	
+    $untouched:	El campo no se ha tocado todavía
+    $touched: 	El campo ha sido tocado
+    $pristine: 	El campo no se ha modificado todavía
+    $dirty: 	El campo ha sido modificado
+    $invalid: 	El contenido del campo no es válido
+    $valid: 	El contenido del campo es válida
+
+Son todas las propiedades del campo de entrada, y están bien true o false.
+
+Formas tienen los siguientes estados:
+
+    $pristine: 	No hay campos han sido modificados sin embargo,
+    $dirty: 	Uno o más han sido modificados
+    $invalid: 	El contenido del formulario no es válido
+    $valid: 	El contenido de formulario es válido
+    $submitted: Este formulario se envía
+
+Son todas las propiedades del formulario, y están bien true o false.
+
+
+	CLASES CSS:
+	-----------
+Las siguientes clases son añadidos a, o removidos de, (campos de entrada):
+
+    ng-untouched: 	El campo no se ha tocado todavía
+    ng-touched: 	El campo ha sido tocado
+    ng-pristine: 	El campo no se ha modificado todavía
+    ng-dirty: 		El campo ha sido modificado
+    ng-valid: 		El contenido del campo es válida
+    ng-invalid 		El contenido del campo no es válido
+    ng-valid-key: 	Una clave para cada validación. Ejemplo: ng-valid-required, útil cuando hay más de una cosa que debe ser validado
+    ng-invalid-key: Ejemplo: ng-invalid-required
+
+Las siguientes clases son añadidos a, o removidos de, (formularios):
+
+    ng-pristine: 	No hay campos no ha sido modificada aún
+    ng-dirty: 		Uno o más campos han sido modificados
+    ng-valid: 		El contenido de formulario es válido
+    ng-invalid: 	El contenido del formulario no es válido
+    ng-valid-key: 	Una clave para cada validación. Ejemplo: ng-valid-required, útil cuando hay más de una cosa que debe ser validado
+    ng-invalid-key: Ejemplo: ng-invalid-required
+
+Las clases se eliminan si el valor que representan es false.	
+
+
+
+
+
+*/
